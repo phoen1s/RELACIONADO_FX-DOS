@@ -3,7 +3,7 @@
 ## Capítulo de Solicitudes de Función
 
 　Este documento explica la información necesaria al crear programas para FX-DOS, especialmente lo relacionado 
-con las solicitudes de función (function requests).<br>
+con las solicitudes de función (function requests).<br><br>
 　Se asume que el lector posee un conocimiento suficiente de MS-DOS. Se recomienda a quienes no lo tengan que 
 preparen material de referencia sobre MS-DOS por separado.<br><br>
 
