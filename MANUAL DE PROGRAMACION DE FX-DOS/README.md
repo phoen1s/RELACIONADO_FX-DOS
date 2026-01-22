@@ -99,9 +99,9 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
 ## ２．Solicitudes de Función (Function Requests)
 
 　La mayor parte de los servicios proporcionados por FX-DOS están disponibles a través de estas solicitudes de 
-función.<br>
+función.<br><br>
 　Están basadas fundamentalmente en las funciones de MS-DOS, pero incluyen algunas con comportamiento ligeramente 
-diferente y otras exclusivas de FX-DOS.<br>
+diferente y otras exclusivas de FX-DOS.<br><br>
 　Tenga en cuenta que los códigos de error devueltos ante problemas pueden diferir de los de MS-DOS.<br><br>
 
   ※ Nota: Básicamente, AX se modifica en estas funciones.<br>
