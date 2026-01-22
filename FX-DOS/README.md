@@ -1,6 +1,6 @@
 # FX-DOS ver 1.80  
 
-　Este es un emulador de MS-DOS (es decir, un software que imita MS-DOS) que funciona en la serie "FX-890P/Z-1" de computadoras de bolsillo CASIO.  
+　Este es un emulador de MS-DOS (es decir, un software que imita MS-DOS) que funciona en la serie "FX-890P/Z-1" de computadoras de bolsillo CASIO.  <br> 
 　Originalmente fue creado como un sistema operativo para computadoras de bolsillo durante su desarrollo, pero como se continuaron actualizando versiones sin establecer una dirección básica clara, terminó convirtiéndose más en un emulador que en un sistema operativo.  
 　La serie "FX-890P/Z-1" tiene la desventaja de que, sin importar cuánta memoria se expanda, el número máximo de archivos que se pueden manejar es de 20.  
 Por lo tanto, FX-DOS fue creado para resolver este problema y además poder manejar controladores de dispositivos que permiten varias expansiones de funcionalidad.  
