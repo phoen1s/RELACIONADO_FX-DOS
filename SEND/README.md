@@ -7,7 +7,7 @@ como HyperTerminal, pero esto presentaba varios inconvenientes: a menudo fallaba
 transferir archivos grandes, solo se podían enviar archivos de texto, entre otros.<br><br>
 　Por lo tanto, este software es una adaptación para Windows del programa de transferencia de archivos<br>
 «SEND» que anteriormente había creado para PC-DOS.<br>
-(Del documento)
+
 
 
 
