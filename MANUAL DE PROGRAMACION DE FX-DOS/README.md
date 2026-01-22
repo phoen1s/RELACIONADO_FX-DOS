@@ -25,8 +25,7 @@
                Otros según la función llamada.
       Salida: Según la función llamada.
       Registros Afectados: AX
-      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, 
-        como operaciones de archivos y entrada/salida de datos.
+      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de archivos y entrada/salida de datos.
 </pre><br>
 
   ◎Dirección de Escape con [BRK] (INT 23H)<br>
@@ -34,7 +33,8 @@
       Entrada: Ninguna
       Salida: Ninguna
       Explicación: Especifica la dirección de la rutina ejecutada al presionar [BRK].
-                   Por defecto, cierra todos los archivos y vuelve a la línea de comandos, pero el usuario puede proporcionar su propia rutina de manejo.
+                   Por defecto, cierra todos los archivos y vuelve a la línea de comandos, pero el usuario 
+                   puede proporcionar su propia rutina de manejo.
                    Si el usuario la maneja, debe restablecer SP dentro de la rutina.
 </pre><br>
 
