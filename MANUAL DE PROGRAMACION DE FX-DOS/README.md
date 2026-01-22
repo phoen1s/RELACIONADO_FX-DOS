@@ -7,7 +7,7 @@
 
 ## １．Llamadas al Sistema
 
-　Cuando FX-DOS inicia en frío (cold start), varias interrupciones de software (software interrupts) quedan disponibles. Estas interrupciones de software se denominan llamadas al sistema (system calls), y generalmente son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS.<br><br>
+　Cuando FX-DOS inicia en frío (cold start), varias interrupciones de software (software interrupts) quedan disponibles. Estas interrupciones de software se denominan llamadas al sistema (system calls), y generalmente son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS.<br>
 <pre>
         INT 21H ･･･ Solicitud de Función (Function Request)
         INT 23H ･･･ Dirección de Escape con [BRK]
