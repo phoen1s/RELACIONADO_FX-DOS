@@ -6,7 +6,6 @@
 Por lo tanto, FX-DOS fue creado para resolver este problema y además poder manejar controladores de dispositivos que permiten varias expansiones de funcionalidad.<br><br> 
 　Al instalar este software, no solo podrá usar el área de archivos como un disco RAM, sino que también podrá construir un entorno japonés capaz de manejar caracteres kanji, intercambiar archivos directamente con una PC, entre otras diversas cosas.
 Sin embargo, este software básicamente construye un entorno llamado FX-DOS sobre la computadora de bolsillo, y es dentro de ese entorno donde se realizan varias tareas. Por favor, tenga en cuenta que instalarlo no significa que podrá manejar discos RAM en BASIC o mostrar caracteres kanji desde BASIC.<br><br> 
-
 　FX-DOS está construido para parecerse a MS-DOS, desde el nivel de llamadas a funciones en su capa inferior hasta el intérprete de comandos en su capa superior. Por lo tanto, para quienes tienen experiencia con MS-DOS, usar FX-DOS será relativamente sencillo.<br>
 
 ～ Para quienes están por instalar FX-DOS ～
