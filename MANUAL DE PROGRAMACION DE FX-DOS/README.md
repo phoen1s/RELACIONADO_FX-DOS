@@ -2,12 +2,16 @@
 
 ## Capítulo de Solicitudes de Función
 
-　Este documento explica la información necesaria al crear programas para FX-DOS, especialmente lo relacionado con las solicitudes de función (function requests).<br>
-　Se asume que el lector posee un conocimiento suficiente de MS-DOS. Se recomienda a quienes no lo tengan que preparen material de referencia sobre MS-DOS por separado.<br><br>
+　Este documento explica la información necesaria al crear programas para FX-DOS, especialmente lo relacionado 
+con las solicitudes de función (function requests).<br>
+　Se asume que el lector posee un conocimiento suficiente de MS-DOS. Se recomienda a quienes no lo tengan que 
+preparen material de referencia sobre MS-DOS por separado.<br><br>
 
 ## １．Llamadas al Sistema
 
-　Cuando FX-DOS inicia en frío (cold start), varias interrupciones de software (software interrupts) quedan disponibles. Estas interrupciones de software se denominan llamadas al sistema (system calls), y generalmente son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS.<br>
+　Cuando FX-DOS inicia en frío (cold start), varias interrupciones de software (software interrupts) quedan 
+disponibles. Estas interrupciones de software se denominan llamadas al sistema (system calls), y generalmente 
+son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS.<br>
 <pre>
         INT 21H ･･･ Solicitud de Función (Function Request)
         INT 23H ･･･ Dirección de Escape con [BRK]
@@ -23,15 +27,16 @@
 <pre>
       Entrada: AH = Número de función
                Otros según la función llamada.
-      Salida: Según la función llamada.
+      Salida:  Según la función llamada.
       Registros Afectados: AX
-      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de archivos y entrada/salida de datos.
+      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de 
+                   archivos y entrada/salida de datos.
 </pre><br>
 
   ◎Dirección de Escape con [BRK] (INT 23H)<br>
 <pre>
       Entrada: Ninguna
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Especifica la dirección de la rutina ejecutada al presionar [BRK].
                    Por defecto, cierra todos los archivos y vuelve a la línea de comandos, pero el usuario 
                    puede proporcionar su propia rutina de manejo.
@@ -44,27 +49,30 @@
                DS:BX = Dirección de transferencia de datos
                CX = Número de sectores
                DX = Número de sector inicial
-      Salida: Cy, AL = Código de error
+      Salida:  Cy, AL = Código de error
       Registros Afectados: AX, BX, CX, DX, BP, DI, SI
       Explicación: Intercambia datos con unidades extendidas por sectores.
-                   Esta función solo puede usarse con unidades extendidas y solo si el controlador de dispositivo la soporta.
-                   Atención: Los flags al momento de la interrupción quedan en la pila al retornar, por lo que se debe usar «POP F» para restaurar el nivel de la pila.
+                   Esta función solo puede usarse con unidades extendidas y solo si el controlador de 
+                   dispositivo la soporta.
+                   Atención: Los flags al momento de la interrupción quedan en la pila al retornar, por lo 
+                   que se debe usar «POP F» para restaurar el nivel de la pila.
 </pre><br>
 
   ◎Salida Directa a Consola (INT 29H)<br>
 <pre>
       Entrada: AL = Carácter a mostrar
-      Salida: Ninguna
+      Salida:  Ninguna
       Registros Afectados: Ninguno
       Explicación: Envía datos directamente a la rutina de visualización de caracteres.
-                   Se conecta directamente al controlador de visualización de texto, permitiendo una salida muy rápida.
+                   Se conecta directamente al controlador de visualización de texto, permitiendo una salida 
+                   muy rápida.
 </pre><br>
 
   ◎Entrada del FEP (INT 2BH)<br>
 <pre>
       Entrada: Ninguna
-      Salida: AL = Carácter ingresado
-              AH = Número de caracteres acumulados en el buffer
+      Salida:  AL = Carácter ingresado
+               AH = Número de caracteres acumulados en el buffer
       Registros Afectados: AX
       Explicación: Lee datos desde el controlador de entrada de teclado (se puede usar incluso sin FEP).
                    Espera si no hay datos de entrada.
@@ -73,14 +81,16 @@
   ◎Acceso Directo a Archivos (INT 2CH)<br>
 <pre>
       Entrada: DS:DX = Nombre de archivo en formato FCB
-      Salida: DX:AX = Tamaño del archivo
-              DS:SI = Dirección inicial del archivo
-              Cy, AX = Código de error (2, 5, 15)
+      Salida:  DX:AX = Tamaño del archivo
+               DS:SI = Dirección inicial del archivo
+               Cy, AX = Código de error (2, 5, 15)
       Registros Afectados: AX, BX, CX, DX, BP, DI, SI, DS, ES
       Explicación: Obtiene la dirección de inicio de la parte de datos de un archivo en la unidad básica.
                    El contenido del archivo reside en un espacio de memoria contiguo comenzando en DS:SI.
-                   Se usa para acceder a archivos a alta velocidad, pero su uso indebido puede dañar otros archivos. Úselo con precaución.
-                   ※ Si se accede al archivo mediante otras funciones después de obtener su dirección inicial, esta información pierde validez.
+                   Se usa para acceder a archivos a alta velocidad, pero su uso indebido puede dañar otros 
+                   archivos. Úselo con precaución.
+                   ※ Si se accede al archivo mediante otras funciones después de obtener su dirección inicial, 
+                   esta información pierde validez.
 </pre><br>
 
   ◎Información de Estado del FEP (INT 30H)<br>
@@ -88,8 +98,8 @@
       Entrada: AH = 0 Obtener versión (AX)
                    1 Obtener modo de entrada (AL)
                    2 Establecer modo de entrada (AL=0: ANK, FF: Kanji)
-      Salida: AX = Versión (si entrada AH=0)
-              AL = Modo de entrada (0: ANK, FF: Kanji) (si entrada AH=1)
+      Salida:  AX = Versión (si entrada AH=0)
+               AL = Modo de entrada (0: ANK, FF: Kanji) (si entrada AH=1)
       Registros Afectados: AX
       Explicación: Consulta o configura el estado del FEP (Front End Processor).
                    No se puede usar si no hay FEP, pero esto permite verificar si un FEP está registrado.
@@ -99,8 +109,10 @@
 
 ## ２．Solicitudes de Función (Function Requests)
 
-　La mayor parte de los servicios proporcionados por FX-DOS están disponibles a través de estas solicitudes de función.<br>
-　Están basadas fundamentalmente en las funciones de MS-DOS, pero incluyen algunas con comportamiento ligeramente diferente y otras exclusivas de FX-DOS.<br>
+　La mayor parte de los servicios proporcionados por FX-DOS están disponibles a través de estas solicitudes de 
+función.<br>
+　Están basadas fundamentalmente en las funciones de MS-DOS, pero incluyen algunas con comportamiento ligeramente 
+diferente y otras exclusivas de FX-DOS.<br>
 　Tenga en cuenta que los códigos de error devueltos ante problemas pueden diferir de los de MS-DOS.<br><br>
 
   ※ Nota: Básicamente, AX se modifica en estas funciones.<br>
@@ -148,33 +160,36 @@
 <pre>
       Entrada: AL = Número de interrupción
                DS:DX = Vector
-      Salida: Ninguna
-      Explicación: Si la dirección del vector es mayor que la dirección inicial del área de archivos «F0» y menor que el final de la RAM, se procesa mediante relocalización automática (self-relocation).
+      Salida:  Ninguna
+      Explicación: Si la dirección del vector es mayor que la dirección inicial del área de archivos «F0» y 
+                   menor que el final de la RAM, se procesa mediante relocalización automática (self-relocation).
 </pre><br>
 
   ◎Obtener Número de Versión (AH=30H)<br>
 <pre>
       Entrada: Ninguna
-      Salida: AX = 0A03H
-              BX = 0FF00H
-              CL = Parte entera de la versión
-              CH = Parte decimal de la versión
+      Salida:  AX = 0A03H
+               BX = 0FF00H
+               CL = Parte entera de la versión
+               CH = Parte decimal de la versión
       Explicación: Para la versión 1.23, devuelve «CL=1, CH=23».
-                   En MS-DOS, CX devolvería «0» como número de usuario. Verificando esto se puede distinguir si el SO es FX-DOS o MS-DOS.
+                   En MS-DOS, CX devolvería «0» como número de usuario. Verificando esto se puede distinguir 
+                   si el SO es FX-DOS o MS-DOS.
 </pre><br>
 
   ◎Terminar y Dejar Residente (AH=31H)<br>
 <pre>
       Entrada: AL = Código de salida
-      Salida: Ninguna
-      Explicación: Existe por compatibilidad con MS-DOS. Internamente funciona exactamente igual que «Terminar Proceso (AH=4CH)».
+      Salida:  Ninguna
+      Explicación: Existe por compatibilidad con MS-DOS. Internamente funciona exactamente igual que «Terminar 
+                   Proceso (AH=4CH)».
 </pre><br>
 
   ◎Obtener Vector de Interrupción (AH=35H)<br>
 <pre>
       Entrada: AL = Número de interrupción
-      Salida: AL = Flag de enlace (0FFH: Enlace DOS)
-              ES:BX = Vector
+      Salida:  AL = Flag de enlace (0FFH: Enlace DOS)
+               ES:BX = Vector
       Explicación: «Enlace DOS» indica que la rutina de manejo de la interrupción reside dentro del sistema DOS.
 </pre><br>
 
@@ -182,7 +197,7 @@
 <pre>
       Entrada: AL = Modo de acceso
                DS:DX = Nombre de ruta
-      Salida: AX = Manejador de archivo (file handle)
+      Salida:  AX = Manejador de archivo (file handle)
       Explicación: Si el bit 2 del modo de acceso es 1, se abre con «bloqueo» y no se podrá cerrar posteriormente.
 </pre><br>
 
@@ -191,7 +206,7 @@
       Entrada: AL = 0: Obtener / 1: Establecer
                CX = Atributos
                DS:DX = Nombre de ruta
-      Salida: CX = Atributos
+      Salida:  CX = Atributos
       Explicación: La relación bits-atributos es la siguiente:
                 b0 ･････ Solo lectura (Read-only)
                 b1 ･････ Invisible
@@ -207,14 +222,14 @@
 <pre>
       Entrada: AL = 0
                BX = Manejador de archivo
-      Salida: DX = Información del dispositivo
+      Salida:  DX = Información del dispositivo
       Explicación: Nótese que en la información devuelta, ISDEV (tipo de dispositivo) está en el bit 8.
 </pre><br>
 
   ◎Obtener Mapa de Unidades (AX=440EH)<br>
 <pre>
       Entrada: AL = 0EH
-      Salida: AX = Mapa de unidades
+      Salida:  AX = Mapa de unidades
       Explicación: La relación bits-unidad es:
                 b15 b14 b13 b12 b11 b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
                 E5  E4  E3  E2  E1  E0  F9 F8 F7 F6 F5 F4 F3 F2 F1 --
@@ -225,7 +240,7 @@
   ◎Terminar Proceso (AH=4CH)<br>
 <pre>
       Entrada: AL = Código de retorno
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Vuelve a la línea de comandos de DOS.
 </pre><br>
 
@@ -233,7 +248,7 @@
   ◎Formatear Disco (AH=80H)<br>
 <pre>
       Entrada: DL = Número de unidad
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Ordena al controlador de dispositivo que formatee la unidad.
                    Correspondencia nombre/número de unidad:
                    F1〜F9 E0〜E5
@@ -244,8 +259,8 @@
 <pre>
       Entrada: AL = Código de mensaje
                DS:DX = Búfer (64 bytes)
-      Salida: CX = Longitud del mensaje
-              Búfer = Cadena de mensaje
+      Salida:  CX = Longitud del mensaje
+               Búfer = Cadena de mensaje
       Explicación: La cadena termina con CR, LF.
                    La correspondencia código-cadena se describe más adelante.
 </pre><br>
@@ -253,21 +268,21 @@
   ◎Establecer Volumen del Click del Teclado (AH=82H)<br>
 <pre>
       Entrada: DL = Volumen (0〜255)
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Volumen 0 = silencio.
 </pre><br>
 
   ◎Obtener Volumen del Click del Teclado (AH=83H)<br>
 <pre>
       Entrada: Ninguna
-      Salida: AL = Volumen
+      Salida:  AL = Volumen
       Explicación: Ninguna.
 </pre><br>
 
   ◎Obtener Tamaño del Área de Máquina (AH=84H)<br>
 <pre>
       Entrada: Ninguna
-      Salida: AX = Tamaño del área de máquina (en bytes)
+      Salida:  AX = Tamaño del área de máquina (en bytes)
       Explicación: El tamaño se da en bytes.
 </pre><br>
 
@@ -275,8 +290,9 @@
 <pre>
       Entrada: DS:DX = Nombre de ruta
                ES:BX = Búfer (16 bytes)
-      Salida: Búfer = Nombre en formato estándar (cadena ASCIIZ)
-      Explicación: El formato estándar es: nombre de unidad + nombre de archivo (8 caracteres) + ‘.’ + extensión (3 caracteres).
+      Salida:  Búfer = Nombre en formato estándar (cadena ASCIIZ)
+      Explicación: El formato estándar es: nombre de unidad + nombre de archivo (8 caracteres) + ‘.’ + 
+                   extensión (3 caracteres).
                    Ej: «F1:CONFIG  .SYS¥0»
 </pre><br>
 
@@ -284,8 +300,9 @@
 <pre>
       Entrada: DS:DX = Nombre de ruta
                ES:BX = Búfer (12 bytes)
-      Salida: Búfer = Nombre en formato FCB
-      Explicación: El formato FCB es: número de unidad + nombre de archivo (8 caracteres) + extensión (3 caracteres).
+      Salida:  Búfer = Nombre en formato FCB
+      Explicación: El formato FCB es: número de unidad + nombre de archivo (8 caracteres) + extensión 
+                   (3 caracteres).
                    Ej: «¥1CONFIG  SYS»
 </pre><br>
 
@@ -293,7 +310,7 @@
 <pre>
       Entrada: DS:DX = Nombre de ruta
                ES:BX = Cadena de parámetros (ASCIIZ)
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Al terminar la ejecución del archivo batch, el control vuelve a la línea de comandos.
 </pre><br>
 
@@ -302,7 +319,7 @@
       Entrada: CX = Año (1980〜2079)
                DH = Mes (1〜12)
                DL = Día (1〜31)
-      Salida: AL = Día de la semana (0:Dom, 1:Lun, 2:Mar, 3:Mié, 4:Jue, 5:Vie, 6:Sáb)
+      Salida:  AL = Día de la semana (0:Dom, 1:Lun, 2:Mar, 3:Mié, 4:Jue, 5:Vie, 6:Sáb)
       Explicación: Calculado basándose en el calendario pitagórico.
 </pre><br>
 
@@ -310,26 +327,28 @@
 <pre>
       Entrada: DS:DX = Nombre de variable
                ES:BX = Contenido
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: El nombre de variable y el contenido deben terminar con 00H.
                    Si el contenido es solo 00H, se elimina la variable.
-                   Si ya existe una variable con el mismo nombre, se elimina la anterior antes de registrar la nueva.
+                   Si ya existe una variable con el mismo nombre, se elimina la anterior antes de registrar 
+                   la nueva.
 </pre><br>
 
   ◎Obtener Variable de Entorno (AH=8AH)<br>
 <pre>
       Entrada: DS:DX = Nombre de variable
                ES:BX = Búfer
-      Salida: AX = Longitud del contenido
-              Búfer = Contenido
+      Salida:  AX = Longitud del contenido
+               Búfer = Contenido
       Explicación: El nombre de variable debe terminar con 00H.
-                   El contenido de las variables de entorno no tiene límite de tamaño, así que asigne el búfer lo más grande posible.
+                   El contenido de las variables de entorno no tiene límite de tamaño, así que asigne el 
+                   búfer lo más grande posible.
 </pre><br>
 
   ◎Asignar FFE (AH=8BH)<br>
 <pre>
       Entrada: BX = Tamaño (en párrafos)
-      Salida: AX = Segmento inicial
+      Salida:  AX = Segmento inicial
       Explicación: Obtiene un área de trabajo desde el Área Libre de Archivos (File Free Area).
                    El área asignada no se libera hasta apagar el equipo.
                    Se usa principalmente para que los controladores de dispositivo obtengan un área residente.
@@ -338,7 +357,7 @@
   ◎Especificar Búfer Histórico para CON (AH=8CH)<br>
 <pre>
       Entrada: DS:DX = Búfer histórico (258 bytes)
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Especifica el búfer histórico para el dispositivo «CON».
                    Se usa para cambiar el historial cuando se usa entrada de teclado con búfer (AH=0AH).
                    Si DX = FFFFH, se usa el predeterminado (línea de comandos de DOS).
@@ -350,24 +369,26 @@
   ◎Abrir AUX (AH=8DH)<br>
 <pre>
       Entrada: Ninguna
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Abre directamente el dispositivo AUX.
-                   Los datos recibidos por el puerto serial se escriben en «RXCNT» del área del sistema (devuelto en DI por la BIOS en B9H), desde donde se pueden obtener.
+                   Los datos recibidos por el puerto serial se escriben en «RXCNT» del área del sistema 
+                   (devuelto en DI por la BIOS en B9H), desde donde se pueden obtener.
 </pre><br>
 
   ◎Cerrar AUX (AH=8EH)<br>
 <pre>
       Entrada: Ninguna
-      Salida: Ninguna
+      Salida:  Ninguna
       Explicación: Cierra el dispositivo AUX abierto con la función anterior.
-                   Si AUX se abrió múltiples veces, se debe cerrar la misma cantidad de veces para que se cierre correctamente. (No hay problema si se cierra de más).
+                   Si AUX se abrió múltiples veces, se debe cerrar la misma cantidad de veces para que se 
+                   cierre correctamente. (No hay problema si se cierra de más).
 </pre><br>
 
   ◎Analizar Ruta de Directorio (AH=8FH)<br>
 <pre>
       Entrada: DS:DX = Cadena con nombre de archivo
                ES:BX = Búfer (64 bytes)
-      Salida: Búfer = Ruta de directorio
+      Salida:  Búfer = Ruta de directorio
       Explicación: Extrae la parte correspondiente al directorio de la cadena de nombre de archivo.
                    Si se omitió el directorio, se deduce la ruta a partir del directorio actual.
                    Ej: «F1:¥¥0»
@@ -420,13 +441,17 @@
 
 <pre>
   ◎Asignación de Memoria
-    　La memoria asignada mediante la función 48H se reserva entre el final del sistema DOS y el área de archivos «F0» y «F1», y se libera para el usuario. Sin embargo, esta asignación es solo temporal y se elimina al volver a la línea de comandos.
+    　La memoria asignada mediante la función 48H se reserva entre el final del sistema DOS y el área de 
+       archivos «F0» y «F1», y se libera para el usuario. Sin embargo, esta asignación es solo temporal y se 
+       elimina al volver a la línea de comandos.
     　Por lo tanto, no se puede usar para registrar programas residentes como en MS-DOS.
     　Para registrar programas residentes, use la función 8BH (Asignar FFE).
-    　FFE (Área Libre de Archivos) es el espacio entre el área de archivos «F9» y el final de la RAM. La asignación toma la cantidad necesaria desde el final de esta área.
+    　FFE (Área Libre de Archivos) es el espacio entre el área de archivos «F9» y el final de la RAM. La 
+       asignación toma la cantidad necesaria desde el final de esta área.
 
   ◎Acceso a Archivos
-    　Al acceder a la unidad básica, escribir en un archivo y expandir su tamaño lleva mucho tiempo. Expandir previamente el archivo al tamaño deseado antes de escribir los datos puede acelerar el procesamiento.
+    　Al acceder a la unidad básica, escribir en un archivo y expandir su tamaño lleva mucho tiempo. Expandir 
+       previamente el archivo al tamaño deseado antes de escribir los datos puede acelerar el procesamiento.
 
   ◎Máximo de Manejadores de Archivo
     　El número máximo de archivos (incluyendo dispositivos) que se pueden abrir simultáneamente es 20.
@@ -434,21 +459,27 @@
   ◎Uso de la BIOS
     　Se permite usar la BIOS en programas para FX-DOS, pero no la use para mostrar caracteres.
     　Esto es para poder aprovechar futuros controladores de visualización de texto.
-    　Además, preste atención a los segmentos al usar la BIOS. Algunas rutinas no funcionan correctamente si DS no es 0.
+    　Además, preste atención a los segmentos al usar la BIOS. Algunas rutinas no funcionan correctamente si 
+       DS no es 0.
 
   ◎Entrada de Teclado
     　Hay dos métodos para entrada de teclado: usar la BIOS o usar INT 2BH. Es mejor usarlos según la situación.
     　Por ejemplo, usar INT 2BH al mover el cursor podría activar el FEP innecesariamente.
-    　Las funciones 03H y 04H de la BIOS no permiten autorepetición (key repeat) por sí solas, pero ejecutando la función 47H de la BIOS justo después se puede habilitar.
+    　Las funciones 03H y 04H de la BIOS no permiten autorepetición (key repeat) por sí solas, pero ejecutando 
+       la función 47H de la BIOS justo después se puede habilitar.
 
   ◎Puntero de Pila (Stack Pointer)
     　Básicamente, no cambie el valor del puntero de pila (SP).
-    　La pila durante la ejecución de una aplicación es la pila del sistema (esto aplica a formatos EXE, COM/CMD y BIN). Si la mueve a otro segmento, la entrada de teclado dejará de funcionar debido a limitaciones de la BIOS.
+    　La pila durante la ejecución de una aplicación es la pila del sistema (esto aplica a formatos EXE, 
+       COM/CMD y BIN). Si la mueve a otro segmento, la entrada de teclado dejará de funcionar debido a 
+       limitaciones de la BIOS.
     　Al ejecutar la terminación de la aplicación (función 4CH), no es necesario restaurar el nivel de la pila.
 
   ◎Manejo de la Instrucción 'ESC' en Nemónicos
-    　Ejecutar la instrucción nemotécnica 'ESC' en el CPU 80188EB de la FX-890P causa un bloqueo. FX-DOS incluye contramedidas para evitar este bloqueo.
-    　Esto permite ejecutar software de MS-DOS en FX-DOS, ya que algunos programas de MS-DOS usan esta instrucción.
+    　Ejecutar la instrucción nemotécnica 'ESC' en el CPU 80188EB de la FX-890P causa un bloqueo. FX-DOS 
+       incluye contramedidas para evitar este bloqueo.
+    　Esto permite ejecutar software de MS-DOS en FX-DOS, ya que algunos programas de MS-DOS usan esta 
+       instrucción.
 
   ◎Sobre Software para MS-DOS
     　FX-DOS procesa los formatos de archivo COM y EXE exactamente igual que MS-DOS.
