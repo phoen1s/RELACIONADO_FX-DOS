@@ -1,12 +1,12 @@
 # Manual del Programador de FX-DOS
 
-Capítulo de Solicitudes de Función
+## Capítulo de Solicitudes de Función
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 　Este documento explica la información necesaria al crear programas para FX-DOS, especialmente lo relacionado con las solicitudes de función (function requests).<br>
 　Se asume que el lector posee un conocimiento suficiente de MS-DOS. Se recomienda a quienes no lo tengan que preparen material de referencia sobre MS-DOS por separado.<br><br>
 
-１．Llamadas al Sistema
+## １．Llamadas al Sistema
 ------------------------------
 　Cuando FX-DOS inicia en frío (cold start), varias interrupciones de software (software interrupts) quedan disponibles. Estas interrupciones de software se denominan llamadas al sistema (system calls), y generalmente son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS.<br><br>
         INT 21H ･･･ Solicitud de Función (Function Request)<br>
@@ -81,7 +81,7 @@ Capítulo de Solicitudes de Función
                    Si se ejecuta INT 30H con AX=0 y AX sigue siendo 0, no hay FEP registrado.<br><br>
 
 
-２．Solicitudes de Función (Function Requests)
+## ２．Solicitudes de Función (Function Requests)
 ------------------------------
 　La mayor parte de los servicios proporcionados por FX-DOS están disponibles a través de estas solicitudes de función.<br>
 　Están basadas fundamentalmente en las funciones de MS-DOS, pero incluyen algunas con comportamiento ligeramente diferente y otras exclusivas de FX-DOS.<br>
@@ -308,7 +308,7 @@ Capítulo de Solicitudes de Función
                        «E1:¥DATA¥ETC¥¥0»<br><br>
 
 
-３．Cadenas de Mensaje
+## ３．Cadenas de Mensaje
 ------------------------------
 　La correspondencia entre los códigos de mensaje y las cadenas obtenibles con la función 81H es la siguiente:<br><br>
          0:???<br>
@@ -347,7 +347,7 @@ Capítulo de Solicitudes de Función
         33:Path not found<br><br>
 
 
-４．Puntos a Considerar al Crear Programas
+## ４．Puntos a Considerar al Crear Programas
 ------------------------------
   ◎Asignación de Memoria<br>
     　La memoria asignada mediante la función 48H se reserva entre el final del sistema DOS y el área de archivos «F0» y «F1», y se libera para el usuario. Sin embargo, esta asignación es solo temporal y se elimina al volver a la línea de comandos.<br>
