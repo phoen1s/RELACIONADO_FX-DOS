@@ -25,7 +25,8 @@
                Otros según la función llamada.
       Salida: Según la función llamada.
       Registros Afectados: AX
-      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de archivos y entrada/salida de datos.
+      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, 
+        como operaciones de archivos y entrada/salida de datos.
 </pre><br>
 
   ◎Dirección de Escape con [BRK] (INT 23H)<br>
