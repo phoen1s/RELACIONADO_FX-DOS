@@ -111,38 +111,38 @@ diferente y otras exclusivas de FX-DOS.<br>
       00H ･･･ Terminar Proceso                    3AH ････ Eliminar Subdirectorio
       01H ･･･ Entrada de Tecla (con eco)          3BH ････ Cambiar Directorio Actual
       02H ･･･ Salida a Pantalla                   3CH ････ Crear Archivo
-      03H ･･･ Salida a AUX                        *3DH ････ Abrir Archivo
+      03H ･･･ Salida a AUX                       *3DH ････ Abrir Archivo
       04H ･･･ Entrada desde AUX                   3EH ････ Cerrar Archivo
       05H ･･･ Salida a PRN                        3FH ････ Leer Archivo
       06H ･･･ E/S Directa de Consola              40H ････ Escribir Archivo
       07H ･･･ Entrada Directa de Consola          41H ････ Eliminar Archivo
       08H ･･･ Entrada de Tecla                    42H ････ Mover Puntero de Archivo
-      09H ･･･ Salida de Cadena                    *43H ････ Obtener/Establecer Atributos
-      0AH ･･･ Entrada de Cadena                   *4400H ･･ Obtener Info. de Dispositivo
+      09H ･･･ Salida de Cadena                   *43H ････ Obtener/Establecer Atributos
+      0AH ･･･ Entrada de Cadena                  *4400H ･･ Obtener Info. de Dispositivo
       0BH ･･･ Verificar Teclado                   4406H ･･ Obtener Estado de Entrada
       0CH ･･･ Vaciar Buffer y Entrar Tecla        4407H ･･ Obtener Estado de Salida
-      0EH ･･･ Establecer Unidad Actual            *440EH ･･ Obtener Mapa de Unidades
+      0EH ･･･ Establecer Unidad Actual           *440EH ･･ Obtener Mapa de Unidades
       19H ･･･ Obtener Unidad Actual               47H ････ Obtener Directorio Actual
       1AH ･･･ Establecer Dirección DTA            48H ････ Asignar Bloque de Memoria
      *25H ･･･ Establecer Vector Int.              4AH ････ Cambiar Tamaño Bloque Mem.
       2AH ･･･ Obtener Fecha                       4BH ････ Ejecutar Programa
-      2BH ･･･ Establecer Fecha                    *4CH ････ Terminar Proceso
+      2BH ･･･ Establecer Fecha                   *4CH ････ Terminar Proceso
       2CH ･･･ Obtener Hora                        4DH ････ Obtener Código de Salida
       2DH ･･･ Establecer Hora                     4FH ････ Buscar Archivo
       2FH ･･･ Obtener Dirección DTA               4FH ････ Continuar Búsqueda Archivo
      *30H ･･･ Obtener Número de Versión           52H ････ Obtener Dirección Var. Entorno
-     *31H ･･･ Terminar y Residentar               *56H ････ Renombrar Archivo
+     *31H ･･･ Terminar y Residentar              *56H ････ Renombrar Archivo
      *35H ･･･ Obtener Vector de Interrup.         57H ････ Obtener/Establecer Fecha/Hora
       36H ･･･ Obtener Espacio Libre en Disco      5BH ････ Crear Archivo Nuevo
       39H ･･･ Crear Subdirectorio
-     *80H ･･･ Formatear Disco                     *88H ･･･ Obtener Día de la Semana
-     *81H ･･･ Obtener Cadena de Mensaje           *89H ･･･ Registrar Variable de Entorno
-     *82H ･･･ Establecer Volumen Click Tecla      *8AH ･･･ Obtener Variable de Entorno
-     *83H ･･･ Obtener Volumen Click Tecla         *8BH ･･･ Asignar FFE
-     *84H ･･･ Obtener Tamaño Área Máquina         *8CH ･･･ Especificar Búfer Histórico CON
-     *85H ･･･ Nombre Archivo a Formato Est.       *8DH ･･･ Abrir AUX
-     *86H ･･･ Nombre Archivo a Formato FCB        *8EH ･･･ Cerrar AUX
-     *87H ･･･ Ejecutar Archivo Batch              *8FH ･･･ Analizar Ruta de Directorio
+     *80H ･･･ Formatear Disco                    *88H ･･･ Obtener Día de la Semana
+     *81H ･･･ Obtener Cadena de Mensaje          *89H ･･･ Registrar Variable de Entorno
+     *82H ･･･ Establecer Volumen Click Tecla     *8AH ･･･ Obtener Variable de Entorno
+     *83H ･･･ Obtener Volumen Click Tecla        *8BH ･･･ Asignar FFE
+     *84H ･･･ Obtener Tamaño Área Máquina        *8CH ･･･ Especificar Búfer Histórico CON
+     *85H ･･･ Nombre Archivo a Formato Est.      *8DH ･･･ Abrir AUX
+     *86H ･･･ Nombre Archivo a Formato FCB       *8EH ･･･ Cerrar AUX
+     *87H ･･･ Ejecutar Archivo Batch             *8FH ･･･ Analizar Ruta de Directorio
 </pre><br>
 
   ◎Establecer Vector de Interrupción (AH=25H)<br>
