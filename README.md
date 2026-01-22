@@ -1,4 +1,4 @@
-# FX-DOS y aplicaciones para la Calculadora CASIO FX-890P/Z1
+# FX-DOS y programas para la CASIO FX-890P/Z1
 
 Este repositorio contiene una copia de seguridad de FX-DOS originalmente desarrollado y publicado por STEAR para la calculadora programable CASIO FX-890P (y modelos relacionados).
 
