@@ -64,8 +64,7 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
       Salida:  Ninguna
       Registros Afectados: Ninguno
       Explicación: Envía datos directamente a la rutina de visualización de caracteres.
-                   Se conecta directamente al controlador de visualización de texto, permitiendo una salida 
-                   muy rápida.
+                   Se conecta directamente al controlador de visualización de texto, permitiendo una salida muy rápida.
 </pre><br>
 
   ◎Entrada del FEP (INT 2BH)<br>
