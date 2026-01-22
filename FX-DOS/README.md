@@ -4,10 +4,10 @@
 　Originalmente fue creado como un sistema operativo para computadoras de bolsillo durante su desarrollo, pero como se continuaron actualizando versiones sin establecer una dirección básica clara, terminó convirtiéndose más en un emulador que en un sistema operativo.<br><br>
 　La serie "FX-890P/Z-1" tiene la desventaja de que, sin importar cuánta memoria se expanda, el número máximo de archivos que se pueden manejar es de 20.  
 Por lo tanto, FX-DOS fue creado para resolver este problema y además poder manejar controladores de dispositivos que permiten varias expansiones de funcionalidad.<br><br> 
-　Al instalar este software, no solo podrá usar el área de archivos como un disco RAM, sino que también podrá construir un entorno japonés capaz de manejar caracteres kanji, intercambiar archivos directamente con una PC, entre otras diversas cosas.  
+　Al instalar este software, no solo podrá usar el área de archivos como un disco RAM, sino que también podrá construir un entorno japonés capaz de manejar caracteres kanji, intercambiar archivos directamente con una PC, entre otras diversas cosas.
 Sin embargo, este software básicamente construye un entorno llamado FX-DOS sobre la computadora de bolsillo, y es dentro de ese entorno donde se realizan varias tareas. Por favor, tenga en cuenta que instalarlo no significa que podrá manejar discos RAM en BASIC o mostrar caracteres kanji desde BASIC.<br><br> 
 
-　FX-DOS está construido para parecerse a MS-DOS, desde el nivel de llamadas a funciones en su capa inferior hasta el intérprete de comandos en su capa superior. Por lo tanto, para quienes tienen experiencia con MS-DOS, usar FX-DOS será relativamente sencillo.<br><br>
+　FX-DOS está construido para parecerse a MS-DOS, desde el nivel de llamadas a funciones en su capa inferior hasta el intérprete de comandos en su capa superior. Por lo tanto, para quienes tienen experiencia con MS-DOS, usar FX-DOS será relativamente sencillo.<br>
 
 ～ Para quienes están por instalar FX-DOS ～
 
