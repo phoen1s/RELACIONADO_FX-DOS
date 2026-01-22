@@ -29,8 +29,7 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
                Otros según la función llamada.
       Salida:  Según la función llamada.
       Registros Afectados: AX
-      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de 
-                   archivos y entrada/salida de datos.
+      Explicación: Proporciona la mayoría de las funcionalidades ofrecidas por FX-DOS, como operaciones de archivos y entrada/salida de datos.
 </pre><br>
 
   ◎Dirección de Escape con [BRK] (INT 23H)<br>
@@ -38,8 +37,7 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
       Entrada: Ninguna
       Salida:  Ninguna
       Explicación: Especifica la dirección de la rutina ejecutada al presionar [BRK].
-                   Por defecto, cierra todos los archivos y vuelve a la línea de comandos, pero el usuario 
-                   puede proporcionar su propia rutina de manejo.
+                   Por defecto, cierra todos los archivos y vuelve a la línea de comandos, pero el usuario puede proporcionar su propia rutina de manejo.
                    Si el usuario la maneja, debe restablecer SP dentro de la rutina.
 </pre><br>
 
@@ -52,10 +50,8 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
       Salida:  Cy, AL = Código de error
       Registros Afectados: AX, BX, CX, DX, BP, DI, SI
       Explicación: Intercambia datos con unidades extendidas por sectores.
-                   Esta función solo puede usarse con unidades extendidas y solo si el controlador de 
-                   dispositivo la soporta.
-                   Atención: Los flags al momento de la interrupción quedan en la pila al retornar, por lo 
-                   que se debe usar «POP F» para restaurar el nivel de la pila.
+                   Esta función solo puede usarse con unidades extendidas y solo si el controlador de dispositivo la soporta.
+                   Atención: Los flags al momento de la interrupción quedan en la pila al retornar, por lo que se debe usar «POP F» para restaurar el nivel de la pila.
 </pre><br>
 
   ◎Salida Directa a Consola (INT 29H)<br>
@@ -86,10 +82,8 @@ son utilizadas por las aplicaciones para acceder a las funcionalidades de FX-DOS
       Registros Afectados: AX, BX, CX, DX, BP, DI, SI, DS, ES
       Explicación: Obtiene la dirección de inicio de la parte de datos de un archivo en la unidad básica.
                    El contenido del archivo reside en un espacio de memoria contiguo comenzando en DS:SI.
-                   Se usa para acceder a archivos a alta velocidad, pero su uso indebido puede dañar otros 
-                   archivos. Úselo con precaución.
-                   ※ Si se accede al archivo mediante otras funciones después de obtener su dirección inicial, 
-                   esta información pierde validez.
+                   Se usa para acceder a archivos a alta velocidad, pero su uso indebido puede dañar otros archivos. Úselo con precaución.
+                   ※ Si se accede al archivo mediante otras funciones después de obtener su dirección inicial, esta información pierde validez.
 </pre><br>
 
   ◎Información de Estado del FEP (INT 30H)<br>
@@ -160,8 +154,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Entrada: AL = Número de interrupción
                DS:DX = Vector
       Salida:  Ninguna
-      Explicación: Si la dirección del vector es mayor que la dirección inicial del área de archivos «F0» y 
-                   menor que el final de la RAM, se procesa mediante relocalización automática (self-relocation).
+      Explicación: Si la dirección del vector es mayor que la dirección inicial del área de archivos «F0» y menor que el final de la RAM, se procesa mediante relocalización automática (self-relocation).
 </pre><br>
 
   ◎Obtener Número de Versión (AH=30H)<br>
@@ -172,16 +165,14 @@ diferente y otras exclusivas de FX-DOS.<br>
                CL = Parte entera de la versión
                CH = Parte decimal de la versión
       Explicación: Para la versión 1.23, devuelve «CL=1, CH=23».
-                   En MS-DOS, CX devolvería «0» como número de usuario. Verificando esto se puede distinguir 
-                   si el SO es FX-DOS o MS-DOS.
+                   En MS-DOS, CX devolvería «0» como número de usuario. Verificando esto se puede distinguir si el SO es FX-DOS o MS-DOS.
 </pre><br>
 
   ◎Terminar y Dejar Residente (AH=31H)<br>
 <pre>
       Entrada: AL = Código de salida
       Salida:  Ninguna
-      Explicación: Existe por compatibilidad con MS-DOS. Internamente funciona exactamente igual que «Terminar 
-                   Proceso (AH=4CH)».
+      Explicación: Existe por compatibilidad con MS-DOS. Internamente funciona exactamente igual que «Terminar Proceso (AH=4CH)».
 </pre><br>
 
   ◎Obtener Vector de Interrupción (AH=35H)<br>
@@ -290,8 +281,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Entrada: DS:DX = Nombre de ruta
                ES:BX = Búfer (16 bytes)
       Salida:  Búfer = Nombre en formato estándar (cadena ASCIIZ)
-      Explicación: El formato estándar es: nombre de unidad + nombre de archivo (8 caracteres) + ‘.’ + 
-                   extensión (3 caracteres).
+      Explicación: El formato estándar es: nombre de unidad + nombre de archivo (8 caracteres) + ‘.’ + extensión (3 caracteres).
                    Ej: «F1:CONFIG  .SYS¥0»
 </pre><br>
 
@@ -300,8 +290,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Entrada: DS:DX = Nombre de ruta
                ES:BX = Búfer (12 bytes)
       Salida:  Búfer = Nombre en formato FCB
-      Explicación: El formato FCB es: número de unidad + nombre de archivo (8 caracteres) + extensión 
-                   (3 caracteres).
+      Explicación: El formato FCB es: número de unidad + nombre de archivo (8 caracteres) + extensión (3 caracteres).
                    Ej: «¥1CONFIG  SYS»
 </pre><br>
 
@@ -329,8 +318,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Salida:  Ninguna
       Explicación: El nombre de variable y el contenido deben terminar con 00H.
                    Si el contenido es solo 00H, se elimina la variable.
-                   Si ya existe una variable con el mismo nombre, se elimina la anterior antes de registrar 
-                   la nueva.
+                   Si ya existe una variable con el mismo nombre, se elimina la anterior antes de registrar la nueva.
 </pre><br>
 
   ◎Obtener Variable de Entorno (AH=8AH)<br>
@@ -340,8 +328,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Salida:  AX = Longitud del contenido
                Búfer = Contenido
       Explicación: El nombre de variable debe terminar con 00H.
-                   El contenido de las variables de entorno no tiene límite de tamaño, así que asigne el 
-                   búfer lo más grande posible.
+                   El contenido de las variables de entorno no tiene límite de tamaño, así que asigne el búfer lo más grande posible.
 </pre><br>
 
   ◎Asignar FFE (AH=8BH)<br>
@@ -370,8 +357,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Entrada: Ninguna
       Salida:  Ninguna
       Explicación: Abre directamente el dispositivo AUX.
-                   Los datos recibidos por el puerto serial se escriben en «RXCNT» del área del sistema 
-                   (devuelto en DI por la BIOS en B9H), desde donde se pueden obtener.
+                   Los datos recibidos por el puerto serial se escriben en «RXCNT» del área del sistema (devuelto en DI por la BIOS en B9H), desde donde se pueden obtener.
 </pre><br>
 
   ◎Cerrar AUX (AH=8EH)<br>
@@ -379,8 +365,7 @@ diferente y otras exclusivas de FX-DOS.<br>
       Entrada: Ninguna
       Salida:  Ninguna
       Explicación: Cierra el dispositivo AUX abierto con la función anterior.
-                   Si AUX se abrió múltiples veces, se debe cerrar la misma cantidad de veces para que se 
-                   cierre correctamente. (No hay problema si se cierra de más).
+                   Si AUX se abrió múltiples veces, se debe cerrar la misma cantidad de veces para que se cierre correctamente. (No hay problema si se cierra de más).
 </pre><br>
 
   ◎Analizar Ruta de Directorio (AH=8FH)<br>
@@ -440,17 +425,13 @@ diferente y otras exclusivas de FX-DOS.<br>
 
 <pre>
   ◎Asignación de Memoria
-    　La memoria asignada mediante la función 48H se reserva entre el final del sistema DOS y el área de 
-       archivos «F0» y «F1», y se libera para el usuario. Sin embargo, esta asignación es solo temporal y se 
-       elimina al volver a la línea de comandos.
+    　La memoria asignada mediante la función 48H se reserva entre el final del sistema DOS y el área de archivos «F0» y «F1», y se libera para el usuario. Sin embargo, esta asignación es solo temporal y se elimina al volver a la línea de comandos.
     　Por lo tanto, no se puede usar para registrar programas residentes como en MS-DOS.
     　Para registrar programas residentes, use la función 8BH (Asignar FFE).
-    　FFE (Área Libre de Archivos) es el espacio entre el área de archivos «F9» y el final de la RAM. La 
-       asignación toma la cantidad necesaria desde el final de esta área.
+    　FFE (Área Libre de Archivos) es el espacio entre el área de archivos «F9» y el final de la RAM. La asignación toma la cantidad necesaria desde el final de esta área.
 
   ◎Acceso a Archivos
-    　Al acceder a la unidad básica, escribir en un archivo y expandir su tamaño lleva mucho tiempo. Expandir 
-       previamente el archivo al tamaño deseado antes de escribir los datos puede acelerar el procesamiento.
+    　Al acceder a la unidad básica, escribir en un archivo y expandir su tamaño lleva mucho tiempo. Expandir previamente el archivo al tamaño deseado antes de escribir los datos puede acelerar el procesamiento.
 
   ◎Máximo de Manejadores de Archivo
     　El número máximo de archivos (incluyendo dispositivos) que se pueden abrir simultáneamente es 20.
@@ -458,27 +439,21 @@ diferente y otras exclusivas de FX-DOS.<br>
   ◎Uso de la BIOS
     　Se permite usar la BIOS en programas para FX-DOS, pero no la use para mostrar caracteres.
     　Esto es para poder aprovechar futuros controladores de visualización de texto.
-    　Además, preste atención a los segmentos al usar la BIOS. Algunas rutinas no funcionan correctamente si 
-       DS no es 0.
+    　Además, preste atención a los segmentos al usar la BIOS. Algunas rutinas no funcionan correctamente si DS no es 0.
 
   ◎Entrada de Teclado
     　Hay dos métodos para entrada de teclado: usar la BIOS o usar INT 2BH. Es mejor usarlos según la situación.
     　Por ejemplo, usar INT 2BH al mover el cursor podría activar el FEP innecesariamente.
-    　Las funciones 03H y 04H de la BIOS no permiten autorepetición (key repeat) por sí solas, pero ejecutando 
-       la función 47H de la BIOS justo después se puede habilitar.
+    　Las funciones 03H y 04H de la BIOS no permiten autorepetición (key repeat) por sí solas, pero ejecutando la función 47H de la BIOS justo después se puede habilitar.
 
   ◎Puntero de Pila (Stack Pointer)
     　Básicamente, no cambie el valor del puntero de pila (SP).
-    　La pila durante la ejecución de una aplicación es la pila del sistema (esto aplica a formatos EXE, 
-       COM/CMD y BIN). Si la mueve a otro segmento, la entrada de teclado dejará de funcionar debido a 
-       limitaciones de la BIOS.
+    　La pila durante la ejecución de una aplicación es la pila del sistema (esto aplica a formatos EXE, COM/CMD y BIN). Si la mueve a otro segmento, la entrada de teclado dejará de funcionar debido a limitaciones de la BIOS.
     　Al ejecutar la terminación de la aplicación (función 4CH), no es necesario restaurar el nivel de la pila.
 
   ◎Manejo de la Instrucción 'ESC' en Nemónicos
-    　Ejecutar la instrucción nemotécnica 'ESC' en el CPU 80188EB de la FX-890P causa un bloqueo. FX-DOS 
-       incluye contramedidas para evitar este bloqueo.
-    　Esto permite ejecutar software de MS-DOS en FX-DOS, ya que algunos programas de MS-DOS usan esta 
-       instrucción.
+    　Ejecutar la instrucción nemotécnica 'ESC' en el CPU 80188EB de la FX-890P causa un bloqueo. FX-DOS incluye contramedidas para evitar este bloqueo.
+    　Esto permite ejecutar software de MS-DOS en FX-DOS, ya que algunos programas de MS-DOS usan esta instrucción.
 
   ◎Sobre Software para MS-DOS
     　FX-DOS procesa los formatos de archivo COM y EXE exactamente igual que MS-DOS.
